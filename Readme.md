@@ -9,7 +9,7 @@ Este es un proyecto de API RESTful desarrollado con Java y Spring Boot. La API p
 - **Generación de la Serie de Fibonacci**: Calcula la serie de Fibonacci basándose en las semillas proporcionadas y el número de elementos requeridos.
 - **Almacenamiento en Base de Datos**: Guarda las series generadas en una base de datos H2.
 - **Autenticación Básica**: Protege los endpoints mediante autenticación básica HTTP.
-- **Swagger UI**: Proporciona documentación interactiva de la API a través de Swagger.
+- **Swagger UI**: Proporciona documentación interactiva de la API a través de Swagger. Acceder a través de la siguiente URL a la documentación del proyecto `http://localhost:8080/swagger-ui/index.html`
 
 ## Tecnologías
 

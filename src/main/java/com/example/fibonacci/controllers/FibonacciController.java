@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/fibonacci")
 @Tag(name = "Fibonacci", description = "Operations related to Fibonacci series")
+@SecurityRequirement(name = "Authorization")
 public class FibonacciController {
 
     private final FibonacciService fibonacciService;
@@ -32,9 +34,11 @@ public class FibonacciController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Fibonacci serie was successfully created",
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Fibonacci.class)) }),
+            @ApiResponse(responseCode = "403", description = "Access Denied",
+                    content = @Content),
             @ApiResponse(responseCode = "400", description = "Bad request",
                     content = @Content),
-            @ApiResponse(responseCode = "404", description = "Fibonacci not found",
+            @ApiResponse(responseCode = "500", description = "Internal Server Error",
                     content = @Content)
     })
     @PostMapping("/calculate")
@@ -52,9 +56,11 @@ public class FibonacciController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the Fibonacci List",
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Fibonacci.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
+            @ApiResponse(responseCode = "403", description = "Access Denied",
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "Fibonacci not found",
+                    content = @Content),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error",
                     content = @Content)
     })
     @GetMapping
